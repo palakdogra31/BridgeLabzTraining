@@ -44,7 +44,7 @@ public class Anagram{
         String str2="";
         str1=sc.nextLine();
         str2=sc.nextLine();
-        char[] arr1=str1.toCharArray();
+        char[] arr1=str1.toCharArray();      //nlogn    space -n
         char[] arr2=str2.toCharArray();
         if(str1.length() != str2.length()) {
          System.out.println("not anagram");
