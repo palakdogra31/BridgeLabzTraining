@@ -31,3 +31,53 @@ public class LongestConsecutiveSubsequence {
         System.out.println(longestSubsequence(arr));
     }
 }
+
+
+
+
+//optimized way by using hashset
+
+import java.util.HashSet;
+
+public class LongestConsecutive {
+
+    public static int longestConsecutive(int[] nums) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        // Step 1: add all numbers into set
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        int longest = 0;
+
+        // Step 2: check every number
+        for (int num : set) {
+
+            // Step 3: check if it is starting point
+            if (!set.contains(num - 1)) {
+
+                int currentNum = num;
+                int count = 1;
+
+                // keep checking next consecutive numbers
+                while (set.contains(currentNum + 1)) {
+                    currentNum++;
+                    count++;
+                }
+
+                longest = Math.max(longest, count);
+            }
+        }
+
+        return longest;
+    }
+
+    public static void main(String[] args) {
+
+        int[] nums = {100,4,200,1,3,2};
+
+        System.out.println(longestConsecutive(nums));
+    }
+}
